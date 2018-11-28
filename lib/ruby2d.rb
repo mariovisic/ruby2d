@@ -36,15 +36,21 @@ end
 
 
 module Ruby2D
-  path = Ruby2D.ext_base_path
-  if path.include? '/Contents/Resources/'
-    @assets = path
-  else
-    @assets = './assets'
-  end
+
+  @assets = nil
 
   class << self
-    def assets; @assets end
+    def assets
+      unless @assets
+        if RUBY_ENGINE == 'mruby'
+          @assets = Ruby2D.ext_base_path + 'assets'
+        else
+          @assets = './assets'
+        end
+      end
+      @assets
+    end
+
     def assets=(path); @assets = path end
   end
 end
