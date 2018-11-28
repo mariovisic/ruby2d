@@ -6,7 +6,7 @@ require 'ruby2d/version'
 # Debugging command-line flag
 @debug = false
 
-# Check Command-line Arguments #################################################
+# Usage ########################################################################
 
 usage = "Ruby 2D: Make cross-platform 2D applications in Ruby".bold + "\n
 Usage: ruby2d <command> <options>
@@ -69,6 +69,8 @@ Choose an option with the #{"simulator".bold} command:
   --log <app>     Stream log for the app only, given the app name
   --log-errors    Stream log containing only error messages\n\n"
 
+# Check Command-line Arguments #################################################
+
 case ARGV[0]
 when 'console'
   require 'ruby2d/cli/console'
@@ -95,6 +97,7 @@ when 'build'
     puts usage_build
   end
 when 'launch'
+  require 'ruby2d/cli/launch'
   case ARGV[1]
   when '--native'
     launch_native

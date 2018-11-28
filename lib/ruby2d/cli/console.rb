@@ -2,7 +2,7 @@ rb_file = ARGV[1]
 
 # Check if source file provided is good
 if !rb_file
-  puts "Please provide a Ruby file to run"
+  puts "Provide a Ruby file to run"
   exit 1
 elsif !File.exist? rb_file
   puts "Can't find file: #{rb_file}"
