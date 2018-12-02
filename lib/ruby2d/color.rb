@@ -70,6 +70,17 @@ module Ruby2D
       end
     end
 
+    # Return a color set if an array of valid colors
+    def self.set(colors)
+      # If a valid array of colors, return a `Color::Set` with those colors
+      if colors.is_a?(Array) && colors.all? { |el| Color.is_valid? el }
+        Color::Set.new(colors)
+      # Otherwise, return single color
+      else
+        Color.new(colors)
+      end
+    end
+
     # Check if string is a proper hex value
     def self.is_hex?(s)
       # MRuby doesn't support regex, otherwise we'd do:
@@ -85,17 +96,6 @@ module Ruby2D
       # Array of Floats from 0.0..1.0
       c.class == Array && c.length == 4 &&
       c.all? { |el| el.is_a?(Numeric) }
-    end
-
-    # Create a color from whatever is provided
-    def self.from(input)
-      # If a valid array of colors, return a `Color::Set` with those colors
-      if input.is_a? Array and input.all? { |el| Color.is_valid? el }
-        Color::Set.new(input)
-      # Otherwise, return single color
-      else
-        Color.new(input)
-      end
     end
 
     # Convenience methods to alias `opacity` to `@a`

@@ -3,7 +3,7 @@
 module Ruby2D
   module Renderable
 
-    attr_reader :z
+    attr_reader :x, :y, :z, :width, :height, :color
 
     # Set the z position (depth) of the object
     def z=(z)
@@ -26,6 +26,15 @@ module Ruby2D
       end
     end
 
+    # Set the color value
+    def color=(c)
+      @color = Color.new(c)
+    end
+
+    # Allow British English spelling of color
+    def colour; self.color end
+    def colour=(c); self.color = c end
+
     # Allow shortcuts for setting color values
     def r; self.color.r end
     def g; self.color.g end
@@ -37,10 +46,6 @@ module Ruby2D
     def a=(c); self.color.a = c end
     def opacity; self.color.opacity end
     def opacity=(val); self.color.opacity = val end
-
-    # Allow British English spelling of color
-    def colour; self.color end
-    def colour=(c); self.color = c end
 
     # Add a contains method stub
     def contains?(x, y)
