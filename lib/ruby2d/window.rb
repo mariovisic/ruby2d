@@ -111,6 +111,7 @@ module Ruby2D
       def mouse_x;         get(:mouse_x)         end
       def mouse_y;         get(:mouse_y)         end
       def diagnostics;     get(:diagnostics)     end
+      def screenshot;      get(:screenshot)      end
 
       def get(sym)
         @@window.get(sym)
@@ -182,6 +183,7 @@ module Ruby2D
       when :mouse_x;         @mouse_x
       when :mouse_y;         @mouse_y
       when :diagnostics;     @diagnostics
+      when :screenshot;      @@window.ext_screenshot('./screenshot.png')
       end
     end
 

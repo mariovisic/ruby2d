@@ -275,6 +275,10 @@ on :key_down do |event|
   if event.key == 'r'
     rotate = rotate ? false : true;
   end
+
+  if event.key == 's'
+    get :screenshot
+  end
 end
 
 on :mouse_down do
