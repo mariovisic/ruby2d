@@ -1096,9 +1096,6 @@ void Init_ruby2d() {
   // Ruby2D
   R_CLASS ruby2d_module = r_define_module("Ruby2D");
 
-  // Ruby2D#self.ext_screenshot
-  r_define_class_method(ruby2d_module, "ext_screenshot", ruby2d_ext_screenshot, r_args_req(1));
-
   // Ruby2D::Triangle
   R_CLASS ruby2d_triangle_class = r_define_class(ruby2d_module, "Triangle");
 
@@ -1200,6 +1197,9 @@ void Init_ruby2d() {
 
   // Ruby2D::Window#ext_show
   r_define_method(ruby2d_window_class, "ext_show", ruby2d_window_ext_show, r_args_none);
+
+  // Ruby2D::Window#ext_screenshot
+  r_define_method(ruby2d_window_class, "ext_screenshot", ruby2d_ext_screenshot, r_args_req(1));
 
   // Ruby2D::Window#ext_close
   r_define_method(ruby2d_window_class, "ext_close", ruby2d_window_ext_close, r_args_none);
